@@ -1,6 +1,8 @@
 body {
     margin: 0;
     padding: 0;
+    background: #eeeeee;
+    box-sizing: border-box;
 }
 
 .header {
@@ -8,7 +10,7 @@ body {
     text-align: center;
     background:black;
     color: white;
-    font-size: 30px;
+    font-size: 20px;
     display: flex;
     flex-direction: row;
 }
@@ -73,20 +75,50 @@ table, th, td {
 
 .text_header {
     font-weight: bold;
-    font-size: 20px;
+    font-size: 10px;
 }
 
 .in-info {
     margin-left: 10px;
 }
 
+.side_bar {
+    width: 300px;
+    border-right: 1px solid #d4d4d4;
+    background: #ffffff;
+}
 
+.content {
+    display: flex;
+    
+}
 
+.main_content {
+    border: 2px solid #d4d4d4;
+    margin: 5px;
+    padding: 10px;
+    height: 100vh;
+    background: #ffffff;
+}
 
+.side_bar_item {
+    border: 1px solid #d4d4d4;
+    padding: 4px;
+    background: #f2f2f2;
+}
 
+.side_bar_item {
+    display: flex;
+    align-items: center;
+}
 
+.side_bar_item_text {
+    margin-left: 5px;
+}
 
-
+.side_bar_item_img img {
+    width: 30px;
+}
 
 
 
