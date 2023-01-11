@@ -130,8 +130,13 @@ table, th, td {
     width: 30px;
 }
 
+.path a {
+    color: blue;
+}
 
-
+.path a:hover {
+    color: purple;
+}
 
 
 /*
