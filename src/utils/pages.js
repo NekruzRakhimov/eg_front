@@ -10,3 +10,23 @@ export const getPagesArray = (totalPages) => {
 
     return result;
 }
+
+export const getSidebarPagesArray = () => {
+    return [
+        {
+            id: "enterprises",
+            path: "/enterprises",
+            title: "Предприятия"
+        },
+        {
+            id: "classifiers",
+            path: "/classifiers",
+            title: "Классификаторы"
+        },
+        {
+            id: "reports",
+            path: "/reports",
+            title: "Отчеты"
+        }
+    ]
+}

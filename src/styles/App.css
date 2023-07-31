@@ -2,12 +2,20 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: "Times New Roman", serif;
+    /*background: #DBE1E8;*/
+    /*border: 0;*/
+}
+
+body {
+    height: 100%;
 }
 
 #root {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    min-height: 100vh;
+    /*align-items: center;*/
 }
 
 .App {
@@ -64,9 +72,50 @@
     display: flex;
     align-items: center;
     padding: 0 15px;
-    background: lightgrey;
+    background: #323A45;
 }
 
 .navbar__links {
     margin-left: auto;
+}
+
+.main {
+    display: flex;
+    height: 100%;
+    flex: 1;
+}
+
+.content {
+    margin: 5px;
+}
+
+.table {
+
+}
+
+.enterprises__table {
+    background: #DBE1E8;
+    border: 1px solid #9EA7B3;
+}
+
+.enterprises__table {
+    padding: 0;
+    margin: 0;
+    border-spacing: 0;
+}
+
+.enterprises__table tbody tr th, .enterprises__table tbody tr td {
+    padding: 5px;
+    border-right: 1px solid #9EA7B3;
+    border-bottom: 1px solid #9EA7B3;
+}
+
+.enterprises__table tbody tr th {
+    background: #5E6D81;
+    color: #DBE1E8;
+}
+
+.enterprises__table tbody tr:hover {
+    background: #9EA7B3;
+    cursor: pointer;
 }

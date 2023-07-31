@@ -1,0 +1,44 @@
+.sidebar {
+    width: 200px;
+    border-right: 1px solid #5E6D81;
+    background: #5E6D81;
+    color: #DBE1E8;
+}
+
+.sidebar__item {
+    padding: 5px 5px 5px 15px;
+    transition: all 0.1s;
+    cursor: pointer;
+}
+
+.sidebar__item:hover {
+    background: #9EA7B3;
+    color: #323A45;
+}
+
+.sidebar__item__current {
+    background: #9EA7B3;
+    color: #323A45;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+/* Убираем стандартное подчеркивание и синий цвет текста для ссылок при наведении */
+a:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Убираем стандартный стиль для активных ссылок (при нажатии) */
+a:active {
+    outline: none;
+}
+
+/* Убираем стандартный стиль для фокусировки на ссылках (при нажатии Tab для фокуса) */
+a:focus {
+    outline: none;
+}
