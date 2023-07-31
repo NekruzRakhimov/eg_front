@@ -13,12 +13,14 @@ const Enterprises = () => {
     // const page = 1;
     const router = useNavigate();
     const [limit, setLimit] = useState(10)
+    const [authorizedCapitalFilter, setAuthorizedCapitalFilter] = useState("-1")
     const [page, setPage] = useState(1)
     const [enterprises, setEnterprises] = useState([])
     const [filter, setFilter] = useState({sort: "", query: ""})
     // let enterprises = []
-    const [fetchEnterprises, isEnterprisesLoading, enterprisesError] = useFetching(async (limit, page, query, sort) => {
-        const response = await EnterprisesService.getAll(limit, page, query, sort);
+    const [fetchEnterprises, isEnterprisesLoading, enterprisesError] = useFetching(
+        async (limit, page, query, sort, authorizedCapitalFilter) => {
+        const response = await EnterprisesService.getAll(limit, page, query, sort, authorizedCapitalFilter);
         console.log(response.data)
         setEnterprises(response.data)
         // enterprises = response.data
@@ -30,8 +32,8 @@ const Enterprises = () => {
 
 
     useEffect(() => {
-        fetchEnterprises(limit, page, filter.query, filter.sort);
-    }, [limit, page, filter.query, filter.sort]);
+        fetchEnterprises(limit, page, filter.query, filter.sort, authorizedCapitalFilter);
+    }, [limit, page, filter.query, filter.sort, authorizedCapitalFilter]);
 
     return (
         <div>
@@ -61,6 +63,20 @@ const Enterprises = () => {
                         {value: "5", name: "5"},
                         {value: "15", name: "15"},
                         {value: "25", name: "25"},
+                        {value: "-1", name: "Все"},
+                    ]}
+                />
+                <span style={{marginLeft: 10, marginRight: 5}}>Размер уставного  капитала: </span>
+                <MySelect
+                    value={authorizedCapitalFilter}
+                    onChane={selectedAuthorized => setAuthorizedCapitalFilter(selectedAuthorized)}
+                    defaultValue={"Размер уставного капитала"}
+                    options={[
+                        {value: "1000000", name: "До 1млн"},
+                        {value: "5000000", name: "До 5млн"},
+                        {value: "5000000", name: "До 5млн"},
+                        {value: "10000000", name: "До 10млн"},
+                        {value: "50000000", name: "До 50млн"},
                         {value: "-1", name: "Все"},
                     ]}
                 />

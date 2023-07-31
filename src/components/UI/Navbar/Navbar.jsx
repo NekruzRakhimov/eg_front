@@ -17,8 +17,8 @@ const Navbar = () => {
                 Выйти
             </MyButton>
             <div className="navbar__links">
-                <Link to="/about">О нас</Link>
-                <Link to="/posts">Посты</Link>
+                <Link to="/about">Шерали Кабир</Link>
+                {/*<Link to="/posts">Посты</Link>*/}
             </div>
         </div>
     );

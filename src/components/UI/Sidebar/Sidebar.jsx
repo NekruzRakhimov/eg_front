@@ -1,8 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import classes from "./Sidebar.module.css"
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
+import Accordion from "../accordion/accordion";
 
 const Sidebar = () => {
+    const currentPath = useLocation().pathname
+    const [open, setOpen] = useState(true)
     return (
         <div className={classes.sidebar}>
             <ul>
@@ -16,11 +19,15 @@ const Sidebar = () => {
                         Классификаторы
                     </li>
                 </Link>
-                <Link to="/reports">
+                {/*<Link to="/reports">*/}
                     <li className={classes.sidebar__item}>
-                        Отчеты
+                        <Accordion isOpen={open} header="Отчеты" onChange={val => setOpen(val)}>
+                           <div>Технический</div>
+                           <div>Отчет 2</div>
+                           <div>Отчет 3</div>
+                        </Accordion>
                     </li>
-                </Link>
+                {/*</Link>*/}
             </ul>
         </div>
     );

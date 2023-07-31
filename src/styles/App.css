@@ -77,6 +77,7 @@ body {
 
 .navbar__links {
     margin-left: auto;
+    color:#DBE1E8;
 }
 
 .main {
@@ -119,3 +120,25 @@ body {
     background: #9EA7B3;
     cursor: pointer;
 }
+
+
+.accordion {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    width: 100%;
+}
+
+.accordion .accordion-header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.accordion .accordion-header .accordion-header-text {
+    flex: 1;
+}
+
