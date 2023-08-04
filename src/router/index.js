@@ -7,11 +7,13 @@ import Enterprises from "../pages/Enterprises";
 import Classifiers from "../pages/Classifiers";
 import Reports from "../pages/Reports";
 import EnterPriseIdPage from "../pages/EnterPriseIdPage";
+import ClassifierItemPage from "../pages/ClassifierItemPage";
 
 export const privateRoutes = [
     {path: "/enterprises", component: Enterprises, exact: true},
     {path: "/enterprises/:id", component: EnterPriseIdPage, exact: true},
     {path: "/classifiers", component: Classifiers, exact: true},
+    {path: "/classifiers/:id/items/:item_id", component: ClassifierItemPage, exact: true},
     {path: "/reports", component: Reports, exact: true},
 
     {path: "/about", component: About, exact: true},
