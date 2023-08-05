@@ -147,3 +147,14 @@ body {
     flex: 1;
 }
 
+.report_technical_economic_list {
+    display: flex;
+    justify-content: space-between;
+    /*flex-wrap: wrap;*/
+}
+
+.report_technical_economic_list_item {
+    width: 50px;
+    /*border: 1px solid #5E6D81;*/
+    /*margin: 5px;*/
+}
