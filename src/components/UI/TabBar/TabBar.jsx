@@ -1,45 +1,45 @@
 import React, {useState} from 'react';
-import PropTypes from "prop-types";
+import "./TabBar.module.css"
+import ReportsKeyIndicatorsTab from "../../ReportsKeyIndicatorsTab";
 
-const TabBar = (props) => {
-    const [activeTab, setActiveTab] = useState(null)
-
-    // let state = {
-    //     activeTab: null,
-    // }
-
-    const componentDidMount = () => {
-        const {children = []} = props
-        const activeTab = getChildrenLabels(children)[0]
-        setActiveTab(activeTab)
-    }
-
-    const getChildrenLabels = (children) => {
-        return children.map(({props}) => props.label);
-    }
-
-    // eslint-disable-next-line no-self-compare
-    if (activeTab !== activeTab) {
-        setActiveTab(activeTab)
-    }
+const TabBar = ({activeKey, children}) => {
+    const [key, setKey] = useState(activeKey)
 
     return (
-        <div>
-
+        <div className="tab-container">
+            <div className="tabs">
+                {children.map(item => {
+                    return (
+                        <div key={item.props.aKey} className={key === item.props.aKey ? "tab-item active" : "tab-item"}
+                             onClick={() => setKey(item.props.aKey)}>
+                            {item.props.title}
+                        </div>
+                    )
+                })}
+            </div>
+            <div className="tab-content">
+                {children.map(item => {
+                        return (
+                            <div key={item.props.aKey} className={key === item.props.aKey ? "tab-pane active" : "tab-pane"}>
+                                {/*{item.props.title}*/}
+                                {item.props.aKey === "1"
+                                    ? <ReportsKeyIndicatorsTab/>
+                                    : <div>В разработке</div>
+                                }
+                            </div>
+                        )
+                    }
+                )}
+            </div>
         </div>
     );
-};
 
-TabBar.propTypes = {
-    children: PropTypes.node,
-    className: PropTypes.string,
-    vertical: PropTypes.bool
 }
 
-TabBar.defaultProps = {
-    children: null,
-    className: "",
-    vertical: false
+export const Tab = () => {
+    return (
+        <></>
+    );
 }
 
 export default TabBar;
