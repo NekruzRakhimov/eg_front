@@ -12,7 +12,7 @@ const ReportIndustrialActivityObjects = () => {
     return (
         <div>
             Объекты промышленной деятельности
-            <TabBar activeKey="react.js">
+            <TabBar activeKey="1">
                 {tabs.map(item => <Tab key={item.aKey} aKey={item.aKey} title={item.title}>{item.content}</Tab>)}
             </TabBar>
         </div>
