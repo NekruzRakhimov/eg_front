@@ -10,11 +10,21 @@ const ReportsKeyIndicatorsTab = () => {
     // const [authorizedCapitalFilter, setAuthorizedCapitalFilter] = useState("-1")
     // const [page, setPage] = useState(1)
     const [report, setReport] = useState({})
-    const [filter, setFilter] = useState({sort: "", query: ""})
+    const [filter, setFilter] = useState(
+        {
+            date_from: "",
+            date_to: "",
+            location: "",
+            economic_activity: "",
+            // organization_age: 0,
+            // yearly_turnover: 0,
+            // authorized_capital: 0
+        }
+    )
     // let enterprises = []
     const [fetchReport, isReportLoading, reportError] = useFetching(
-        async () => {
-            const response = await ReportService.GetIndustrialObjectsKeyIndicators();
+        async (filter) => {
+            const response = await ReportService.GetIndustrialObjectsKeyIndicators(filter);
             console.log(response.data)
             setReport(response.data)
             // enterprises = response.data
@@ -26,41 +36,54 @@ const ReportsKeyIndicatorsTab = () => {
 
 
     useEffect(() => {
-        fetchReport();
-    }, []);
+        fetchReport(filter);
+    }, [filter]);
 
     return (
         <div>
-            <MyInput
-                type="calendar"
-                placeholder={"на заданный период"}
-                value={filter.query}
-                onChange={e => setFilter({...filter, query: e.target.value})}
-            />
+            <div>
+                <MyInput
+                    // type="date"
+                    type="date" id="timeRange" name="timeRange"
+                    placeholder={"на заданный период"}
+                    value={filter.date_from}
+                    onChange={e => setFilter({...filter, date_from: e.target.value})}
+                />
+                <MyInput
+                    type="date"
+                    placeholder={"на заданный период"}
+                    value={filter.date_to}
+                    onChange={e => setFilter({...filter, date_to: e.target.value})}
+                />
+            </div>
+
             <MyInput
                 placeholder={"по выбору месторасположения"}
-                value={filter.query}
-                onChange={e => setFilter({...filter, query: e.target.value})}
+                value={filter.location}
+                onChange={e => setFilter({...filter, location: e.target.value})}
             />
             <MyInput
                 placeholder={"по выбору экономической деятельности"}
-                value={filter.query}
-                onChange={e => setFilter({...filter, query: e.target.value})}
+                value={filter.economic_activity}
+                onChange={e => setFilter({...filter, economic_activity: e.target.value})}
             />
             <MyInput
+                type="number"
                 placeholder={"По выбору возраста организации"}
-                value={filter.query}
-                onChange={e => setFilter({...filter, query: e.target.value})}
+                value={filter.organization_age}
+                onChange={e => setFilter({...filter, organization_age: e.target.value})}
             />
             <MyInput
+                type="number"
                 placeholder={"по заданному годовому обороту"}
-                value={filter.query}
-                onChange={e => setFilter({...filter, query: e.target.value})}
+                value={filter.yearly_turnover}
+                onChange={e => setFilter({...filter, yearly_turnover: e.target.value})}
             />
             <MyInput
+                type="number"
                 placeholder={"по размеру уставного капитала"}
-                value={filter.query}
-                onChange={e => setFilter({...filter, query: e.target.value})}
+                value={filter.authorized_capital}
+                onChange={e => setFilter({...filter, authorized_capital: e.target.value})}
             />
             <hr/>
             <div>
