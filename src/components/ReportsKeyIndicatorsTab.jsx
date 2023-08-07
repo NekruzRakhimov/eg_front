@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import MyInput from "./UI/input/MyInput";
 import {useFetching} from "../hooks/useFetching";
-import EnterprisesService from "../API/EnterprisesService";
 import ReportService from "../API/ReportService";
 
 const ReportsKeyIndicatorsTab = () => {
@@ -45,13 +44,13 @@ const ReportsKeyIndicatorsTab = () => {
                 <MyInput
                     // type="date"
                     type="date" id="timeRange" name="timeRange"
-                    placeholder={"на заданный период"}
+                    placeholder={"на заданный период ОТ"}
                     value={filter.date_from}
                     onChange={e => setFilter({...filter, date_from: e.target.value})}
                 />
                 <MyInput
                     type="date"
-                    placeholder={"на заданный период"}
+                    placeholder={"на заданный период ДО"}
                     value={filter.date_to}
                     onChange={e => setFilter({...filter, date_to: e.target.value})}
                 />
