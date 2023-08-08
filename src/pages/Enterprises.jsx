@@ -2,11 +2,11 @@ import React, {useEffect, useState} from 'react';
 import {useFetching} from "../hooks/useFetching";
 import EnterprisesService from "../API/EnterprisesService";
 import Loader from "../components/UI/Loader/Loader";
-import EnterprisesFilter from "../components/EnterprisesFilter";
 import MyInput from "../components/UI/input/MyInput";
 import MySelect from "../components/UI/select/MySelect";
-import {queries} from "@testing-library/react";
 import {useNavigate} from "react-router-dom";
+import Pagination from "../components/UI/pagination/pagination";
+import {getPageCount} from "../utils/pages";
 
 const Enterprises = () => {
     // const limit = 10;
@@ -14,26 +14,37 @@ const Enterprises = () => {
     const router = useNavigate();
     const [limit, setLimit] = useState(10)
     const [authorizedCapitalFilter, setAuthorizedCapitalFilter] = useState("-1")
+    const [enterpriseAgeFilter, setEnterpriseAgeFilter] = useState("-1")
+    const [totalPages, setTotalPages] = useState(0)
     const [page, setPage] = useState(1)
     const [enterprises, setEnterprises] = useState([])
     const [filter, setFilter] = useState({sort: "", query: ""})
     // let enterprises = []
     const [fetchEnterprises, isEnterprisesLoading, enterprisesError] = useFetching(
-        async (limit, page, query, sort, authorizedCapitalFilter) => {
-        const response = await EnterprisesService.getAll(limit, page, query, sort, authorizedCapitalFilter);
-        console.log(response.data)
-        setEnterprises(response.data)
-        // enterprises = response.data
+        async (limit, page, query, sort, authorizedCapitalFilter, enterpriseAgeFilter) => {
+            const response = await EnterprisesService.getAll(limit, page, query, sort, authorizedCapitalFilter, enterpriseAgeFilter)
+            console.log(response.data)
 
-        // setPosts([...posts, ...response.data,])
-        // const totalCount = response.headers["x-total-count"]
-        // setTotalPages(getPageCount(totalCount, limit))
-    })
+            setEnterprises(response.data)
+            const totalCount = response.headers.get("X-Total-Count")
+            console.log("totalCount", totalCount)
+            // console.log("limit", limit)
+            // setTotalPages(getPageCount(totalCount, limit))
+            console.log("totalCount", response.headers["Transfer-Encoding"])
+            console.log("totalCount", response.headers['x-total-count'])
+            // console.log("totalPage", getPageCount(totalCount, limit))
+            // const totalCount = response.headers["x-total-count"]
+            // setTotalPages(getPageCount(totalCount, limit))
+        })
 
 
     useEffect(() => {
-        fetchEnterprises(limit, page, filter.query, filter.sort, authorizedCapitalFilter);
-    }, [limit, page, filter.query, filter.sort, authorizedCapitalFilter]);
+        fetchEnterprises(limit, page, filter.query, filter.sort, authorizedCapitalFilter, enterpriseAgeFilter);
+    }, [limit, page, filter.query, filter.sort, authorizedCapitalFilter, enterpriseAgeFilter]);
+
+    const changePage = (page) => {
+        setPage(page)
+    }
 
     return (
         <div>
@@ -76,7 +87,21 @@ const Enterprises = () => {
                         {value: "5000000", name: "До 5млн"},
                         {value: "5000000", name: "До 5млн"},
                         {value: "10000000", name: "До 10млн"},
-                        {value: "50000000", name: "До 50млн"},
+                        {value: "500000000", name: "До 50млн"},
+                        {value: "-1", name: "Все"},
+                    ]}
+                />
+                <span style={{marginLeft: 10, marginRight: 5}}>Возраст организации: </span>
+                <MySelect
+                    value={enterpriseAgeFilter}
+                    onChane={selectedEnterpriseAge => setEnterpriseAgeFilter(selectedEnterpriseAge)}
+                    defaultValue={"Возраст организации"}
+                    options={[
+                        {value: " < 1", name: "Менее одного года"},
+                        {value: " > 1", name: "Более одного года"},
+                        {value: " > 3", name: "Больше 3-х лет"},
+                        {value: " > 5", name: "Больше 5-и лет"},
+                        {value: " > 10", name: "Больше 10-и лет"},
                         {value: "-1", name: "Все"},
                     ]}
                 />
@@ -99,7 +124,7 @@ const Enterprises = () => {
                 {enterprises.map((enterprise, index) =>
                     <tr
                         className="table_link"
-                        key={index} onClick={() => router(`/enterprises/${enterprise.id}`)}>
+                        key={enterprise.id} onClick={() => router(`/enterprises/${enterprise.id}`)}>
                         <td>{enterprise.id}</td>
                         <td>{enterprise.name}</td>
                         <td>{enterprise.ownership_type}</td>
@@ -117,6 +142,11 @@ const Enterprises = () => {
             {isEnterprisesLoading &&
                 <div style={{display: "flex", justifyContent: "center"}}><Loader/></div>
             }
+            <Pagination
+                page={page}
+                changePage={changePage}
+                totalPages={totalPages}
+            />
         </div>
     );
 };
