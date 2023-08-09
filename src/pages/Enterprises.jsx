@@ -6,7 +6,6 @@ import MyInput from "../components/UI/input/MyInput";
 import MySelect from "../components/UI/select/MySelect";
 import {useNavigate} from "react-router-dom";
 import Pagination from "../components/UI/pagination/pagination";
-import {getPageCount} from "../utils/pages";
 
 const Enterprises = () => {
     // const limit = 10;
@@ -18,11 +17,11 @@ const Enterprises = () => {
     const [totalPages, setTotalPages] = useState(0)
     const [page, setPage] = useState(1)
     const [enterprises, setEnterprises] = useState([])
-    const [filter, setFilter] = useState({sort: "", query: ""})
+    const [filter, setFilter] = useState({sort: "", query: "", limit: 10, location_filter: ""})
     // let enterprises = []
     const [fetchEnterprises, isEnterprisesLoading, enterprisesError] = useFetching(
-        async (limit, page, query, sort, authorizedCapitalFilter, enterpriseAgeFilter) => {
-            const response = await EnterprisesService.getAll(limit, page, query, sort, authorizedCapitalFilter, enterpriseAgeFilter)
+        async (limit, page, query, sort, authorizedCapitalFilter, enterpriseAgeFilter, location_filter) => {
+            const response = await EnterprisesService.getAll(limit, page, query, sort, authorizedCapitalFilter, enterpriseAgeFilter, location_filter)
             console.log(response.data)
 
             setEnterprises(response.data)
@@ -39,8 +38,8 @@ const Enterprises = () => {
 
 
     useEffect(() => {
-        fetchEnterprises(limit, page, filter.query, filter.sort, authorizedCapitalFilter, enterpriseAgeFilter);
-    }, [limit, page, filter.query, filter.sort, authorizedCapitalFilter, enterpriseAgeFilter]);
+        fetchEnterprises(limit, page, filter.query, filter.sort, authorizedCapitalFilter, enterpriseAgeFilter, filter.location_filter);
+    }, [limit, page, filter.query, filter.sort, authorizedCapitalFilter, enterpriseAgeFilter,filter.location_filter]);
 
     const changePage = (page) => {
         setPage(page)
@@ -55,6 +54,11 @@ const Enterprises = () => {
                     value={filter.query}
                     onChange={e => setFilter({...filter, query: e.target.value})}
                 />
+                <MyInput
+                    placeholder={"Фильтр по населенному пункту..."}
+                    value={filter.location_filter}
+                    onChange={e => setFilter({...filter, location_filter: e.target.value})}
+                />
                 <MySelect
                     value={filter.sort}
                     onChane={selectedSort => setFilter({...filter, sort: selectedSort})}
@@ -67,11 +71,12 @@ const Enterprises = () => {
                 />
                 <span style={{marginLeft: 10, marginRight: 5}}>Кол-во элементов: </span>
                 <MySelect
-                    value={filter.limit}
+                    value={limit}
                     onChane={selectedLimit => setLimit(selectedLimit)}
                     defaultValue={"Кол-во элементов"}
                     options={[
                         {value: "5", name: "5"},
+                        {value: "10", name: "10"},
                         {value: "15", name: "15"},
                         {value: "25", name: "25"},
                         {value: "-1", name: "Все"},

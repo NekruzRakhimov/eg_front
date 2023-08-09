@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default class EnterprisesService {
-    static async getAll(limit = 10, page = 1, query="", sort="", authorizedCapitalFilter="", enterpriseAgeFilter="") {
+    static async getAll(limit = 10, page = 1, query="", sort="", authorizedCapitalFilter="", enterpriseAgeFilter="", location_filter="") {
         const response = await
             axios.get("https://egback-caf44ed58dff.herokuapp.com/enterprises", {
                 params: {
@@ -10,7 +10,8 @@ export default class EnterprisesService {
                     _query: query,
                     _sort: sort,
                     _authorized_capital_filter: authorizedCapitalFilter,
-                    _enterprise_age_filter: enterpriseAgeFilter
+                    _enterprise_age_filter: enterpriseAgeFilter,
+                    _location_filter: location_filter
                 }
             })
         return response
