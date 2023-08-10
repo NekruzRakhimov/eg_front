@@ -1,11 +1,9 @@
 import React, {useState} from 'react';
-import "./TabBar.module.css"
 import ReportsKeyIndicatorsTab from "../../ReportsKeyIndicatorsTab";
-import ReportsComparisonAndForecasting from "../../ReportsComparisonAndForecasting";
 
-const TabBar = ({activeKey, children}) => {
+const EnterpriseTabBar = ({activeKey, children}) => {
     const [key, setKey] = useState(activeKey)
-    const e = "ReportsKeyIndicatorsTab"
+
 
     return (
         <div className="tab-container">
@@ -25,9 +23,8 @@ const TabBar = ({activeKey, children}) => {
                             <div key={item.props.aKey} className={key === item.props.aKey ? "tab-pane active" : "tab-pane"}>
                                 {/*{item.props.title}*/}
                                 {item.props.aKey === "1"
-                                    ? <ReportsKeyIndicatorsTab/> :
-                                    item.props.aKey === "2" ? <ReportsComparisonAndForecasting/>
-                                        : <div>В разработке</div>
+                                    ? <ReportsKeyIndicatorsTab/>
+                                    : <div>В разработке</div>
                                 }
                             </div>
                         )
@@ -44,5 +41,4 @@ export const Tab = () => {
         <></>
     );
 }
-
-export default TabBar;
+export default EnterpriseTabBar;

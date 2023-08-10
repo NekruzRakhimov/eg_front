@@ -217,3 +217,27 @@ body {
     font-size: 24px;
     margin-bottom: 8px;
 }
+
+.enterprise_id_page_main {
+    display: flex;
+}
+
+.enterprise_id_page_main_item, .enterprise_id_page_main_sidebar{
+    font-size: 14px;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 1px solid #9EA7B3;
+    margin: 5px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0 3px 6px, rgba(0, 0, 0, 0.23) 0 3px 6px;
+}
+
+.enterprise_id_page_main_item{
+    width: 60%;
+
+}
+
+.enterprise_id_page_main_sidebar {
+    width: 35%
+}
