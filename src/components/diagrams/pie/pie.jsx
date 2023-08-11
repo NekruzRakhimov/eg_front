@@ -3,7 +3,11 @@ import {
     Chart as ChartJS,
     ArcElement,
     Tooltip,
-    Legend
+    Legend,
+    LineElement,
+    CategoryScale,//x axis
+    LinearScale, // y axis
+    PointElement
 } from "chart.js"
 
 import {Pie} from "react-chartjs-2"
@@ -11,28 +15,20 @@ import {Pie} from "react-chartjs-2"
 ChartJS.register(
     ArcElement,
     Tooltip,
-    Legend
+    Legend,
+    LineElement,
+    CategoryScale,//x axis
+    LinearScale, // y axis
+    PointElement
 );
 
 const PieDiagram = ({labels, dataSet}) => {
-    // const data = {
-    //     labels: ["active", "closed", "processing"],
-    //     datasets: [
-    //         {
-    //             data: [1, 2, 3],
-    //             backgroundColor: ["green", "blue", "purple"]
-    //         }
-    //     ]
-    // }
-
     const data = {
         labels: labels,
-        datasets:dataSet
+        datasets: dataSet
     }
 
-    const options = {
-
-    }
+    const options = {}
 
     return (
         <div style={
@@ -42,8 +38,8 @@ const PieDiagram = ({labels, dataSet}) => {
             }
         }>
             <Pie
-            data = {data}
-            options = {options}
+                data={data}
+                options={options}
             ></Pie>
         </div>
 
