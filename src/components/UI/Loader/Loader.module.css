@@ -1,3 +1,17 @@
+.loaderContainer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 300px;
+    bottom: 0;
+    z-index: 1;
+    pointer-events: none;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .loader {
     width: 100px;
     height: 100px;

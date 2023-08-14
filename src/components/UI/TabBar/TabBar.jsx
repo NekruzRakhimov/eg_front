@@ -5,7 +5,6 @@ import ReportsComparisonAndForecasting from "../../ReportsComparisonAndForecasti
 
 const TabBar = ({activeKey, children}) => {
     const [key, setKey] = useState(activeKey)
-    const e = "ReportsKeyIndicatorsTab"
 
     return (
         <div className="tab-container">

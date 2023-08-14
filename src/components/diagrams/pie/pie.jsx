@@ -34,7 +34,7 @@ const PieDiagram = ({labels, dataSet}) => {
         <div style={
             {
                 "padding": "20px",
-                // "width": "50%"
+                "width": "70%"
             }
         }>
             <Pie
