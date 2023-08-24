@@ -6,6 +6,7 @@ import Loader from "../components/UI/Loader/Loader";
 import EnterprisesService from "../API/EnterprisesService";
 import TabBar, {Tab} from "../components/UI/TabBar/TabBar";
 import EnterpriseTabBar from "../components/UI/EnterpriseTabBar/EnterpriseTabBar";
+import reports from "./Reports";
 
 const enterpriseTabs = [
     {aKey: "1", title: "Структура", content: "1"},
@@ -22,9 +23,12 @@ const enterpriseTabs = [
 const EnterPriseIdPage = (props) => {
     const params = useParams()
     const [enterPrise, setEnterPrise] = useState({});
+    const [employees, setEmployees] = useState([]);
     const [fetchEnterpriseByID, isLoading, error] = useFetching(async (id) => {
         const response = await EnterprisesService.getByID(params.id)
-        setEnterPrise(response.data)
+        setEnterPrise(response.data.enterprise)
+        setEmployees(response.data.employees)
+        console.log(employees)
     })
 
     useEffect(() => {
@@ -65,7 +69,7 @@ const EnterPriseIdPage = (props) => {
                         </div>
                     </div>
                     <div>
-                        <EnterpriseTabBar activeKey="1"  enterprise={enterPrise}>
+                        <EnterpriseTabBar activeKey="1"  enterprise={enterPrise} employees={employees}>
                             {enterpriseTabs.map(item => <Tab key={item.aKey} aKey={item.aKey}
                                                              title={item.title}>{item.content}</Tab>)}
                         </EnterpriseTabBar>

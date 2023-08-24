@@ -1,8 +1,28 @@
 import React, {useState} from 'react';
 import ReportsKeyIndicatorsTab from "../../ReportsKeyIndicatorsTab";
+import EnterpriseEmployeesTable from "../../EnterpriseEmployeesTable";
 
-const EnterpriseTabBar = ({activeKey, children, enterprise}) => {
+const EnterpriseTabBar = ({activeKey, children, enterprise, employees}) => {
     const [key, setKey] = useState(activeKey)
+
+    // const employees = [
+    //     {
+    //         id: 1,
+    //         full_name: "Некруз Рахимов",
+    //         inn: "1234562456",
+    //         job_title: "Разработчик",
+    //         birth_date: "09.08.2002",
+    //         work_experience: "2 года"
+    //     },
+    //     {
+    //         id: 2,
+    //         full_name: "Иванов Иван",
+    //         inn: "54323456543",
+    //         job_title: "Тестировщик",
+    //         birth_date: "07.10.1990",
+    //         work_experience: "2 года"
+    //     }
+    // ]
 
     return (
         <div className="tab-container">
@@ -45,6 +65,8 @@ const EnterpriseTabBar = ({activeKey, children, enterprise}) => {
                                         Дом: -<br/>
                                         Квартира:-<br/>
                                     </div>
+                                    : item.props.aKey === "5"
+                                    ? <EnterpriseEmployeesTable employees={employees}/>
                                     : <div>В разработке</div>
                                 }
                             </div>

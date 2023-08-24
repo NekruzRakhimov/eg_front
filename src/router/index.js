@@ -14,10 +14,12 @@ import ReportSocialEconomic from "../pages/ReportSocialEconomic";
 import ReportNatural from "../pages/ReportNatural";
 import ReportForeignEconomic from "../pages/ReportForeignEconomic";
 import ReportIndustrialActivityObjects from "../pages/ReportIndustrialActivityObjects";
+import EmployeeIdPage from "../pages/EmployeeIDPage";
 
 export const privateRoutes = [
     {path: "/enterprises", component: Enterprises, exact: true},
     {path: "/enterprises/:id", component: EnterPriseIdPage, exact: true},
+    {path: "/employees/:id", component: EmployeeIdPage, exact: true},
     {path: "/classifiers", component: Classifiers, exact: true},
     {path: "/classifiers/:id/items/:item_id", component: ClassifierItemPage, exact: true},
     {path: "/reports", component: Reports, exact: true},
