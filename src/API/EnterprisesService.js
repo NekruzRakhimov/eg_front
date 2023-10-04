@@ -1,6 +1,13 @@
 import axios from "axios";
 
 export default class EnterprisesService {
+    static async Create(enterpriseInfo) {
+        const response = await
+            axios.post("https://egback-caf44ed58dff.herokuapp.com/enterprises", {
+                body: enterpriseInfo
+            })
+        return response
+    }
     static async getAll(limit = 10, page = 1, query="", sort="", authorizedCapitalFilter="", enterpriseAgeFilter="", location_filter="") {
         const response = await
             axios.get("https://egback-caf44ed58dff.herokuapp.com/enterprises", {

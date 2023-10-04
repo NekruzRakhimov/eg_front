@@ -14,12 +14,14 @@ export default class ClassifiersService {
         return response
     }
 
-    static async getByID(id) {
+    static async getByCode(code) {
 
         const response = await
-            axios.get(`https://egback-caf44ed58dff.herokuapp.com/enterprises/${id}`)
+            axios.get(`https://egback-caf44ed58dff.herokuapp.com/classifiers/by_code/${code}`)
         return response
     }
+
+
 
     static async getClassifierItems(classifierID, itemID, limit = 10, page = 1, query="", sort="") {
 

@@ -251,3 +251,24 @@ body {
 .enterprise_id_page_main_sidebar {
     width: 35%
 }
+
+.enterprises-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.create-enterprise-btn {
+    height: 50px;
+    padding: 5px;
+    margin: 5px 0 0 5px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.create-enterprise-btn:hover {
+    background: #9EA7B3;
+    cursor: pointer;
+    color: white;
+}

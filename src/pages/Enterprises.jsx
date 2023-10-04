@@ -25,21 +25,12 @@ const Enterprises = () => {
             console.log(response.data)
 
             setEnterprises(response.data)
-            const totalCount = response.headers.get("X-Total-Count")
-            console.log("totalCount", totalCount)
-            // console.log("limit", limit)
-            // setTotalPages(getPageCount(totalCount, limit))
-            console.log("totalCount", response.headers["Transfer-Encoding"])
-            console.log("totalCount", response.headers['x-total-count'])
-            // console.log("totalPage", getPageCount(totalCount, limit))
-            // const totalCount = response.headers["x-total-count"]
-            // setTotalPages(getPageCount(totalCount, limit))
         })
 
 
     useEffect(() => {
         fetchEnterprises(limit, page, filter.query, filter.sort, authorizedCapitalFilter, enterpriseAgeFilter, filter.location_filter);
-    }, [limit, page, filter.query, filter.sort, authorizedCapitalFilter, enterpriseAgeFilter,filter.location_filter]);
+    }, [limit, page, filter.query, filter.sort, authorizedCapitalFilter, enterpriseAgeFilter, filter.location_filter]);
 
     const changePage = (page) => {
         setPage(page)
@@ -47,7 +38,19 @@ const Enterprises = () => {
 
     return (
         <div>
-            Список предприятий
+            <div className="enterprises-header">
+                <div>
+                    Список предприятий
+                </div>
+                <div>
+                    <button
+                        className="create-enterprise-btn"
+                        onClick={() => router(`/create_enterprises`)}>
+                        Создать предприятие
+                    </button>
+                </div>
+
+            </div>
             <div>
                 <MyInput
                     placeholder={"Поиск..."}
