@@ -9,19 +9,21 @@ const EnterpriseForm = () => {
     const [inn, setInn] = useState('');
     const [ein, setEin] = useState('');
     const [okved, setOkved] = useState('');
-    const [okvedList, setOkvedList] = useState('');
+    const [okvedList, setOkvedList] = useState([]);
+    const [selectedOkved, setSelectedOkved] = useState({id: 0, full_name: "выберите классификатор"});
     const [kfc, setKfc] = useState('');
-    const [kfcList, setKfcList] = useState('');
+    const [kfcList, setKfcList] = useState([]);
+    const [selectedKfc, setSelectedKfc] = useState({id: 0, full_name: "выберите классификатор"});
     const [registrationDate, setRegistrationDate] = useState('');
     const [address, setAddress] = useState('');
     const [authorizedCapital, setAuthorizedCapital] = useState('');
 
     const [fetchClassifierOkved, isClassifierOkvedLoading, ClassifierOkvedError] = useFetching(
         async () => {
-            const response = await ClassifiersService.getByCode("okved")
+            const response = await ClassifiersService.getClassifierAllItems(3)
             console.log(response.data)
-
-            setOkvedList(response.data)
+            setOkved(response.data)
+            console.log(okved)
         })
 
 
@@ -29,30 +31,46 @@ const EnterpriseForm = () => {
         fetchClassifierOkved();
     }, []);
 
-    const [fetchClassifierOkvedItems, isClassifierOkvedItemsLoading, ClassifierOkvedItemsError] = useFetching(
-        async () => {
-            const response = await ClassifiersService.getByCode("okved")
-            console.log(response.data)
+     const [fetchClassifierOkvedItems, isClassifierOkvedItemsLoading, ClassifierOkvedItemsError] = useFetching(
+         async () => {
+             const response = await ClassifiersService.getClassifierAllItems(3)
+             console.log(response.data)
 
-            setOkvedList(response.data)
-        })
+             setOkvedList(response.data)
+         })
 
 
-    useEffect(() => {
-        fetchClassifierOkvedItems();
-    }, []);
+     useEffect(() => {
+         fetchClassifierOkvedItems();
+     }, []);
 
     const [fetchClassifierKfc, isClassifierKfcLoading, ClassifierKfcError] = useFetching(
         async () => {
             const response = await ClassifiersService.getByCode("kfc")
             console.log(response.data)
 
-            setKfcList(response.data)
+            setKfc(response.data)
+            console.log(kfc)
         })
 
 
     useEffect(() => {
         fetchClassifierKfc();
+    }, []);
+
+    const [fetchClassifierKfcItems, isClassifierKfcItemsLoading, ClassifierKfcItemsError] = useFetching(
+        async () => {
+
+            const response = await ClassifiersService.getClassifierItems(6, 0)
+            console.log(response.data)
+
+            setKfcList(response.data)
+            console.log(kfcList)
+        })
+
+
+    useEffect(() => {
+        fetchClassifierKfcItems();
     }, []);
 
 
@@ -62,23 +80,38 @@ const EnterpriseForm = () => {
             console.log(response.data)
         })
 
+    const handleOkvedSelectChange = (event) => {
+        const selectedIndex = event.target.selectedIndex;
+        const selectedOkvedItem = okvedList[selectedIndex];
+        setSelectedOkved(selectedOkvedItem);
+    };
+
+    const handleKfcSelectChange = (event) => {
+        const selectedIndex = event.target.selectedIndex;
+        const selectedKfcItem = kfcList[selectedIndex];
+        setSelectedKfc(selectedKfcItem);
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
-
+        console.log(selectedKfc)
+        console.log(selectedOkved)
         // Создаем объект с данными формы
         const formData = {
             name: name,
             inn: inn,
             ein: ein,
-            ownership_type: kfc,
-            okved: okved,
+            ownership_type: selectedKfc.full_name,
+            okved: selectedOkved.full_name,
+            okved_id: selectedOkved.id,
+            kfc_id: selectedKfc.id,
             registration_date: registrationDate,
             address: address,
             authorized_capital: Number(authorizedCapital)
         };
 
         createEnterprise(formData)
-        //window.location.href = "/enterprises";
+        window.location.href = "/enterprises";
     };
 
     return (
@@ -101,18 +134,42 @@ const EnterpriseForm = () => {
                 value={inn}
                 onChange={(e) => setInn(e.target.value)}
             /><br/>
-            <input
-                type="text"
-                placeholder="ОКВЭД"
-                value={okved}
-                onChange={(e) => setOkved(e.target.value)}
-            /><br/>
-            <input
-                type="text"
-                placeholder="КФС"
-                value={kfc}
-                onChange={(e) => setKfc(e.target.value)}
-            /><br/>
+            <select value={selectedKfc.full_name} onChange={handleKfcSelectChange}>
+                {kfcList.map((kfcItem, index) =>
+                    <option key={kfcItem.id}>{kfcItem.full_name}</option>
+                    // <tr
+                    //     className="table_link"
+                    //     key={enterprise.id} onClick={() => router(`/enterprises/${enterprise.id}`)}>
+                    //     <td>{enterprise.id}</td>
+                    //     <td>{enterprise.name}</td>
+                    //     <td>{enterprise.ownership_type}</td>
+                    //     <td>{enterprise.okved}</td>
+                    //     <td>{enterprise.inn}</td>
+                    //     <td>{enterprise.ein}</td>
+                    //     <td>{enterprise.registration_date}</td>
+                    //     <td>{enterprise.address}</td>
+                    //     <td>{enterprise.authorized_capital}</td>
+                    // </tr>
+                )}
+            </select><br/>
+            <select value={selectedOkved.full_name}  onChange={handleOkvedSelectChange}>
+                {okvedList.map((okvedItem, index) =>
+                        <option key={okvedItem.id}>{okvedItem.full_name}</option>
+                    // <tr
+                    //     className="table_link"
+                    //     key={enterprise.id} onClick={() => router(`/enterprises/${enterprise.id}`)}>
+                    //     <td>{enterprise.id}</td>
+                    //     <td>{enterprise.name}</td>
+                    //     <td>{enterprise.ownership_type}</td>
+                    //     <td>{enterprise.okved}</td>
+                    //     <td>{enterprise.inn}</td>
+                    //     <td>{enterprise.ein}</td>
+                    //     <td>{enterprise.registration_date}</td>
+                    //     <td>{enterprise.address}</td>
+                    //     <td>{enterprise.authorized_capital}</td>
+                    // </tr>
+                )}
+            </select><br/>
             <input
                 type="date"
                 placeholder="Дата регистрации"

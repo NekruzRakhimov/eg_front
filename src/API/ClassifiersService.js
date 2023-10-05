@@ -29,4 +29,11 @@ export default class ClassifiersService {
             axios.get(`https://egback-caf44ed58dff.herokuapp.com/classifiers/${classifierID}/items/${itemID}`)
         return response
     }
+
+    static async getClassifierAllItems(classifierID, limit = 10, page = 1, query="", sort="") {
+
+        const response = await
+            axios.get(`https://egback-caf44ed58dff.herokuapp.com/classifiers/${classifierID}/all-items`)
+        return response
+    }
 }
