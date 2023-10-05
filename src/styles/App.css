@@ -302,6 +302,6 @@ body {
 }
 
 .create-enterprise-form-btn {
-    height: 30px;
     padding: 5px;
+    font-size: 16px;
 }
