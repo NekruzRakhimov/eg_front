@@ -3,8 +3,8 @@ import EnterpriseForm from "../components/EnterpriseForm";
 
 const CreateEnterprise = () => {
     return (
-        <div>
-            Создание предприятия
+        <div className='create-enterprise-container'>
+            <h3 style={{"textAlign": "center"}}>Создание предприятия</h3>
             <EnterpriseForm/>
         </div>
     );

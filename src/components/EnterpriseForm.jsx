@@ -115,80 +115,54 @@ const EnterpriseForm = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="create-enterprise-form">
             <input
                 type="text"
                 placeholder="Название предприятия"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-            /><br/>
+            />
             <input
                 type="text"
                 placeholder="ЕИН"
                 value={ein}
                 onChange={(e) => setEin(e.target.value)}
-            /><br/>
+            />
             <input
                 type="text"
                 placeholder="ИНН"
                 value={inn}
                 onChange={(e) => setInn(e.target.value)}
-            /><br/>
+            />
             <select value={selectedKfc.full_name} onChange={handleKfcSelectChange}>
                 {kfcList.map((kfcItem, index) =>
                     <option key={kfcItem.id}>{kfcItem.full_name}</option>
-                    // <tr
-                    //     className="table_link"
-                    //     key={enterprise.id} onClick={() => router(`/enterprises/${enterprise.id}`)}>
-                    //     <td>{enterprise.id}</td>
-                    //     <td>{enterprise.name}</td>
-                    //     <td>{enterprise.ownership_type}</td>
-                    //     <td>{enterprise.okved}</td>
-                    //     <td>{enterprise.inn}</td>
-                    //     <td>{enterprise.ein}</td>
-                    //     <td>{enterprise.registration_date}</td>
-                    //     <td>{enterprise.address}</td>
-                    //     <td>{enterprise.authorized_capital}</td>
-                    // </tr>
                 )}
-            </select><br/>
+            </select>
             <select value={selectedOkved.full_name}  onChange={handleOkvedSelectChange}>
                 {okvedList.map((okvedItem, index) =>
                         <option key={okvedItem.id}>{okvedItem.full_name}</option>
-                    // <tr
-                    //     className="table_link"
-                    //     key={enterprise.id} onClick={() => router(`/enterprises/${enterprise.id}`)}>
-                    //     <td>{enterprise.id}</td>
-                    //     <td>{enterprise.name}</td>
-                    //     <td>{enterprise.ownership_type}</td>
-                    //     <td>{enterprise.okved}</td>
-                    //     <td>{enterprise.inn}</td>
-                    //     <td>{enterprise.ein}</td>
-                    //     <td>{enterprise.registration_date}</td>
-                    //     <td>{enterprise.address}</td>
-                    //     <td>{enterprise.authorized_capital}</td>
-                    // </tr>
                 )}
-            </select><br/>
+            </select>
             <input
                 type="date"
                 placeholder="Дата регистрации"
                 value={registrationDate}
                 onChange={(e) => setRegistrationDate(e.target.value)}
-            /><br/>
+            />
             <input
                 type="text"
                 placeholder="Адрес"
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
-            /><br/>
+            />
             <input
                 type="number"
                 placeholder="Капитал"
                 value={authorizedCapital}
                 onChange={(e) => setAuthorizedCapital(e.target.value)}
-            /><br/>
-            <button type="submit">Отправить</button>
+            />
+            <button type="submit" className="create-enterprise-form-btn">Отправить</button>
         </form>
     );
 };
