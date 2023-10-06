@@ -210,7 +210,6 @@ body {
 }
 
 .tab-content {
-    padding: 28px 20px;
 }
 
 .tab-pane {
@@ -304,4 +303,30 @@ body {
 .create-enterprise-form-btn {
     padding: 5px;
     font-size: 16px;
+}
+
+.add-licence-btn {
+    margin: 5px;
+}
+
+.create-licence-form {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.create-licence-form .MyInput,
+.create-licence-form>select {
+    margin-bottom: 5px;
+}
+
+
+.create-licence-form .MyInput{
+    width: 100%;
+}
+
+.create-licence-form-btn {
+    width: 30%;
+    height: 30px;
+    margin: 0 auto;
 }

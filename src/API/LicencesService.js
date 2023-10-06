@@ -23,4 +23,12 @@ export default class LicencesService {
             axios.get(`https://egback-caf44ed58dff.herokuapp.com/licences/${id}`)
         return response
     }
+
+    static async Create(enterpriseID, licenceInfo) {
+        const response = await
+            axios.post(`https://egback-caf44ed58dff.herokuapp.com/enterprises/${enterpriseID}/licence`, {
+                body: licenceInfo
+            })
+        return response
+    }
 }

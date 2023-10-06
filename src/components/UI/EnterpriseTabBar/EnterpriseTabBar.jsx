@@ -68,7 +68,7 @@ const EnterpriseTabBar = ({activeKey, children, enterprise, employees, licences}
                                     </div>
 
                                     : item.props.aKey === "2"
-                                        ? <EnterpriseLicencesTable licences={licences}/>
+                                        ? <EnterpriseLicencesTable licences={licences} enterprise={enterprise}/>
                                         : item.props.aKey === "5"
                                             ? <EnterpriseEmployeesTable employees={employees}/>
                                             : <div>В разработке</div>

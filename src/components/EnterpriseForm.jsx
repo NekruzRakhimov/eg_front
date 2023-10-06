@@ -74,7 +74,7 @@ const EnterpriseForm = () => {
     }, []);
 
 
-    const [createEnterprise, isCreateEnterprise, createEnterpriseError] = useFetching(
+    const [createEnterprise, isCreateEnterpriseLoading, createEnterpriseError] = useFetching(
         async (formData) => {
             const response = await EnterprisesService.Create(formData)
             console.log(response.data)
