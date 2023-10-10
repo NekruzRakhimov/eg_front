@@ -330,3 +330,24 @@ body {
     height: 30px;
     margin: 0 auto;
 }
+
+.create-employee-radio-option {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.create-employee-form-fields-title {
+    margin-top: 5px;
+    font-weight: bold;
+}
+
+
+.create-employee-container {
+    width: 100%;
+}
+
+.create-employee-form {
+    width: 70%;
+    margin: 0 auto;
+}

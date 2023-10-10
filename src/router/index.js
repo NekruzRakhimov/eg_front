@@ -17,12 +17,14 @@ import ReportIndustrialActivityObjects from "../pages/ReportIndustrialActivityOb
 import EmployeeIdPage from "../pages/EmployeeIDPage";
 import LicenceIDPage from "../pages/LicenceIDPage";
 import CreateEnterprise from "../pages/CreateEnterprise";
+import CreatingEmployeePage from "../pages/CreatingEmployeePage";
 
 export const privateRoutes = [
     {path: "/enterprises", component: Enterprises, exact: true},
     {path: "/create_enterprises", component: CreateEnterprise, exact: true},
     {path: "/enterprises/:id", component: EnterPriseIdPage, exact: true},
 
+    {path: "/enterprises/:id/create_employee", component: CreatingEmployeePage, exact: true},
     {path: "/employees/:id", component: EmployeeIdPage, exact: true},
     {path: "//licences/:id", component: LicenceIDPage, exact: true},
 

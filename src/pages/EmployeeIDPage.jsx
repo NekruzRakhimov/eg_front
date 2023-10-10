@@ -30,7 +30,7 @@ const EmployeeIdPage = () => {
                             <div><b>ФИО:</b> {employee.full_name}</div>
                             <div><b>Пол:</b> {employee.gender}</div>
                             <div><b>Дата рождения:</b> {employee.birth_date}</div>
-                            <div><b>Страна рождения:</b> {employee.inn}</div>
+                            <div><b>Страна рождения:</b> {employee.birth_country}</div>
                             <div><b>Город, где родился:</b> {employee.birth_city}</div>
                             <div><b>Национальность:</b> {employee.nationality}</div>
                             <div><b>Гражданство:</b> {employee.citizenship}</div>

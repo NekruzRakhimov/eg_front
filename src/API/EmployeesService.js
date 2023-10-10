@@ -17,6 +17,14 @@ export default class EmployeesService {
     //     return response
     // }
 
+    static async Create(enterpriseID, employeeInfo) {
+        const response = await
+            axios.post(`https://egback-caf44ed58dff.herokuapp.com/enterprises/${enterpriseID}/employee`, {
+                body: employeeInfo
+            })
+        return response
+    }
+
     static async getByID(id) {
 
         const response = await

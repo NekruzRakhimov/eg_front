@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import ReportsKeyIndicatorsTab from "../../ReportsKeyIndicatorsTab";
 import EnterpriseEmployeesTable from "../../EnterpriseEmployeesTable";
 import EnterpriseLicencesTable from "../../EnterpriseLicencesTable";
 
@@ -70,7 +69,7 @@ const EnterpriseTabBar = ({activeKey, children, enterprise, employees, licences}
                                     : item.props.aKey === "2"
                                         ? <EnterpriseLicencesTable licences={licences} enterprise={enterprise}/>
                                         : item.props.aKey === "5"
-                                            ? <EnterpriseEmployeesTable employees={employees}/>
+                                            ? <EnterpriseEmployeesTable employees={employees} enterprise={enterprise}/>
                                             : <div>В разработке</div>
                                 }
                             </div>
