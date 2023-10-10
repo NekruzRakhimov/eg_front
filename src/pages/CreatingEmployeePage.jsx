@@ -88,7 +88,7 @@ const CreatingEmployeePage = () => {
 
         console.log(formData)
         createEmployee(params.id, formData)
-        //window.location.href = `/enterprises/${params.id}`;
+        window.location.href = `/enterprises/${params.id}`;
     };
     return (
         <div className="create-employee-container">
