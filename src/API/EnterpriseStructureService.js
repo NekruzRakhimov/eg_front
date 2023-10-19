@@ -1,7 +1,7 @@
 import axios from "axios";
 import {MAIN_HOST} from "../utils/configs";
 
-export default class EmployeesService {
+export default class EnterpriseStructureService {
     // static async getAll(limit = 10, page = 1, query="", sort="", authorizedCapitalFilter="", enterpriseAgeFilter="", location_filter="") {
     //     const response = await
     //         axios.get("https://egback-caf44ed58dff.herokuapp.com/enterprises", {
@@ -18,18 +18,18 @@ export default class EmployeesService {
     //     return response
     // }
 
-    static async Create(enterpriseID, employeeInfo) {
+    static async getByID(enterprise_id, structure_id) {
+
         const response = await
-            axios.post(`${MAIN_HOST}/enterprises/${enterpriseID}/employee`, {
-                body: employeeInfo
-            })
+            axios.get(`${MAIN_HOST}/enterprise_structure/${enterprise_id}/${structure_id}`)
         return response
     }
 
-    static async getByID(id) {
-
-        const response = await
-            axios.get(`${MAIN_HOST}/employees/${id}`)
-        return response
-    }
+    // static async Create(enterpriseID, licenceInfo) {
+    //     const response = await
+    //         axios.post(`${MAIN_HOST}/enterprises/${enterpriseID}/licence`, {
+    //             body: licenceInfo
+    //         })
+    //     return response
+    // }
 }

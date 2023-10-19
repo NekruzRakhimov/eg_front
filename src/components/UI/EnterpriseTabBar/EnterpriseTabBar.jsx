@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import EnterpriseEmployeesTable from "../../EnterpriseEmployeesTable";
 import EnterpriseLicencesTable from "../../EnterpriseLicencesTable";
+import EnterpriseStructureTable from "../../EnterpriseStructureTable";
 
-const EnterpriseTabBar = ({activeKey, children, enterprise, employees, licences}) => {
+const EnterpriseTabBar = ({activeKey, children, enterprise, employees, licences, structure}) => {
     const [key, setKey] = useState(activeKey)
 
     // const employees = [
@@ -68,9 +69,11 @@ const EnterpriseTabBar = ({activeKey, children, enterprise, employees, licences}
 
                                     : item.props.aKey === "2"
                                         ? <EnterpriseLicencesTable licences={licences} enterprise={enterprise}/>
-                                        : item.props.aKey === "5"
-                                            ? <EnterpriseEmployeesTable employees={employees} enterprise={enterprise}/>
-                                            : <div>В разработке</div>
+                                        : item.props.aKey === "1"
+                                            ? <EnterpriseStructureTable enterpriseID={enterprise.id} structure={structure}/>
+                                            : item.props.aKey === "5"
+                                                ? <EnterpriseEmployeesTable employees={employees} enterprise={enterprise}/>
+                                                : <div>В разработке</div>
                                 }
                             </div>
                         )

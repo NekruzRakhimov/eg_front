@@ -1,9 +1,10 @@
 import axios from "axios";
+import {MAIN_HOST} from "../utils/configs";
 
 export default class ReportService {
     static async GetIndustrialObjectsKeyIndicators(filter) {
         const response = await
-            axios.get("https://egback-caf44ed58dff.herokuapp.com/reports/technical_economic/industrial_activity_objects/key_indicators",
+            axios.get(`${MAIN_HOST}/reports/technical_economic/industrial_activity_objects/key_indicators`,
                 {
                     params: {
                         _date_from: filter.date_from,

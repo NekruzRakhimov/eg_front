@@ -25,12 +25,13 @@ const EnterPriseIdPage = (props) => {
     const [enterPrise, setEnterPrise] = useState({});
     const [employees, setEmployees] = useState([]);
     const [licences, setLicences] = useState([]);
+    const [structure, setStructure] = useState([]);
     const [fetchEnterpriseByID, isLoading, error] = useFetching(async (id) => {
         const response = await EnterprisesService.getByID(params.id)
         setEnterPrise(response.data.enterprise)
         setEmployees(response.data.employees)
         setLicences(response.data.licences)
-        console.log(employees)
+        setStructure(response.data.structure)
     })
 
     useEffect(() => {
@@ -71,7 +72,11 @@ const EnterPriseIdPage = (props) => {
                         </div>
                     </div>
                     <div>
-                        <EnterpriseTabBar activeKey="1"  enterprise={enterPrise} employees={employees} licences={licences}>
+                        <EnterpriseTabBar activeKey="1"
+                                          enterprise={enterPrise}
+                                          employees={employees}
+                                          licences={licences}
+                                          structure={structure}>
                             {enterpriseTabs.map(item => <Tab key={item.aKey} aKey={item.aKey}
                                                              title={item.title}>{item.content}</Tab>)}
                         </EnterpriseTabBar>

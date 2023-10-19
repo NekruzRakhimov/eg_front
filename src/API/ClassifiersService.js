@@ -1,9 +1,10 @@
 import axios from "axios";
+import {MAIN_HOST} from "../utils/configs";
 
 export default class ClassifiersService {
     static async getAll(limit = 10, page = 1, query="", sort="") {
         const response = await
-            axios.get("https://egback-caf44ed58dff.herokuapp.com/classifiers", {
+            axios.get(`${MAIN_HOST}/classifiers`, {
                 params: {
                     _limit: limit,
                     _page: page,
@@ -17,7 +18,7 @@ export default class ClassifiersService {
     static async getByCode(code) {
 
         const response = await
-            axios.get(`https://egback-caf44ed58dff.herokuapp.com/classifiers/by_code/${code}`)
+            axios.get(`${MAIN_HOST}/classifiers/by_code/${code}`)
         return response
     }
 

@@ -1,16 +1,17 @@
 import axios from "axios";
+import {MAIN_HOST} from "../utils/configs";
 
 export default class EnterprisesService {
     static async Create(enterpriseInfo) {
         const response = await
-            axios.post("https://egback-caf44ed58dff.herokuapp.com/enterprises", {
+            axios.post(`${MAIN_HOST}/enterprises`, {
                 body: enterpriseInfo
             })
         return response
     }
     static async getAll(limit = 10, page = 1, query="", sort="", authorizedCapitalFilter="", enterpriseAgeFilter="", location_filter="") {
         const response = await
-            axios.get("https://egback-caf44ed58dff.herokuapp.com/enterprises", {
+            axios.get(`${MAIN_HOST}/enterprises`, {
                 params: {
                     _limit: limit,
                     _page: page,
@@ -27,7 +28,7 @@ export default class EnterprisesService {
     static async getByID(id) {
 
         const response = await
-            axios.get(`https://egback-caf44ed58dff.herokuapp.com/enterprises/${id}`)
+            axios.get(`${MAIN_HOST}/enterprises/${id}`)
         return response
     }
 }
