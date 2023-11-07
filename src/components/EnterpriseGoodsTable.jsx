@@ -33,7 +33,7 @@ const EnterpriseGoodsTable = ({enterprise, goods}) => {
                     <tr
                         className="table_link"
                         key={good.id}
-                        onClick={() => router(`/licences/${good.id}`)}>
+                        onClick={() => router(`/goods/${good.id}`)}>
                         <td>{good.id}</td>
                         <td>{good.ext_id}</td>
                         <td>{good.full_name}</td>
