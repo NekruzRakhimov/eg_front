@@ -20,7 +20,6 @@ const ClassifierItemPage = () => {
             const response = await ClassifiersService.getClassifierItems(classifierID, itemID, limit, page, query, sort);
             console.log(response.data)
             setClassifierItems(response.data)
-
         })
 
 

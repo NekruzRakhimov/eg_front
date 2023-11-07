@@ -19,6 +19,7 @@ import LicenceIDPage from "../pages/LicenceIDPage";
 import CreateEnterprise from "../pages/CreateEnterprise";
 import CreatingEmployeePage from "../pages/CreatingEmployeePage";
 import EnterpriseStructureIdPage from "../pages/EnterpriseStructureIDPage";
+import GoodIdPage from "../pages/GoodIDPage";
 
 export const privateRoutes = [
     {path: "/enterprises", component: Enterprises, exact: true},
@@ -28,6 +29,7 @@ export const privateRoutes = [
     {path: "/enterprises/:id/create_employee", component: CreatingEmployeePage, exact: true},
     {path: "/employees/:id", component: EmployeeIdPage, exact: true},
     {path: "/licences/:id", component: LicenceIDPage, exact: true},
+    {path: "/goods/:id", component: GoodIdPage, exact: true},
     {path: "/enterprise_structure/:enterprise_id/:structure_id", component: EnterpriseStructureIdPage, exact: true},
 
     {path: "/classifiers", component: Classifiers, exact: true},

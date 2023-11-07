@@ -39,7 +39,7 @@ const EnterpriseLicencesTable = ({licences, enterprise}) => {
                 {licences.map((licence, index) =>
                     <tr
                         className="table_link"
-                        key={licences.id}
+                        key={licence.id}
                         onClick={() => router(`/licences/${licence.id}`)}>
                         <td>{licence.id}</td>
                         <td>{licence.series}</td>

@@ -4,7 +4,6 @@ import {useFetching} from "../hooks/useFetching";
 import Loader from "../components/UI/Loader/Loader";
 import EnterpriseStructureService from "../API/EnterpriseStructureService";
 import EnterpriseStructureTabBar from "../components/EnterpriseStructureTabBar";
-import EnterpriseTabBar from "../components/UI/EnterpriseTabBar/EnterpriseTabBar";
 import {Tab} from "../components/UI/TabBar/TabBar";
 
 const enterpriseStructureTabs = [
