@@ -355,6 +355,7 @@ body {
 #tajikistan-map-container {
     display: flex;
     justify-content: center;
+    width: 100%;
 
 }
 
@@ -379,7 +380,7 @@ path:hover {
     z-index: 12;
 }
 
-#reportSocialEconomic-MainContent {
+.ReportSocialEconomic-MainContent {
     display: flex;
-    flex-direction: column;
+    /*flex-direction: column;*/
 }
