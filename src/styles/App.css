@@ -316,12 +316,12 @@ body {
 }
 
 .create-licence-form .MyInput,
-.create-licence-form>select {
+.create-licence-form > select {
     margin-bottom: 5px;
 }
 
 
-.create-licence-form .MyInput{
+.create-licence-form .MyInput {
     width: 100%;
 }
 
@@ -352,6 +352,54 @@ body {
     margin: 0 auto;
 }
 
+.ReportsMainHeader {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.ReportsSubHeader {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.ReportSocialEconomic-DetailedReport-Container {
+    border-top: 1px solid #9EA7B3;
+}
+
+.ReportSocialEconomic-DetailedReport {
+    display: flex;
+}
+
+.ReportSocialEconomic-DetailedReport-NavBar {
+    width: 300px;
+    background: #DBE1E8;
+    border: 2px solid #9EA7B3;
+    padding: 5px;
+    margin-right: 10px;
+}
+
+.ReportSocialEconomic-DetailedReport-NavBar-Region {
+    border-bottom: 1px solid #9EA7B3;
+}
+
+.ReportSocialEconomic-DetailedReport-NavBar-Region-Title {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.ReportSocialEconomic-DetailedReport-NavBar-Region-Items {
+    margin-left: 20px;
+}
+
+.ReportSocialEconomic-DetailedReport-NavBar-Region-Item {
+    border-top: 1px solid #9EA7B3;
+}
+
+.ReportSocialEconomic-DetailedReport-NavBar-Region-Item:hover{
+    background: #9EA7B3;
+}
+
 #tajikistan-map-container {
     display: flex;
     justify-content: center;
@@ -366,16 +414,17 @@ svg {
 
 
 }
-.land
-{
+
+.land {
     fill: #CCCCCC;
     fill-opacity: 1;
-    stroke:white;
+    stroke: white;
     stroke-opacity: 0;
     stroke-width: 2;
 }
+
 path:hover {
-    stroke:green;
+    stroke: green;
     stroke-opacity: 1;
     z-index: 12;
 }
